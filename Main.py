@@ -13,12 +13,12 @@ def login():
         password = str(input("Enter password: "))
 
         if username not in login_details:
-            print('Invalid login credentials, try again...')
+            print('\033[91mInvalid login credentials, try again...\033[0m')
         elif bcrypt.checkpw(password.encode('utf-8'),login_details[username]):
-            print(f'Login successful! Welcome {username}')
+            print(f'\033[92mLogin successful! Welcome {username}\033[0m')
             login_successful = True
         else:
-            print('Invalid login credentials, try again...')
+            print('\033[91mInvalid login credentials, try again...\033[0m')
 
 def main():
     login()
