@@ -19,7 +19,7 @@ def validate_position_input(index, max):
                 raise ValueError('Invalid index, try again...')
             return int(index)
         except ValueError as error:
-            print(error)
+            print(f'\033[91m{error}\033[0m')
             index = get_position_input()
         except Exception as e:
             print(f'Error: {e}')
