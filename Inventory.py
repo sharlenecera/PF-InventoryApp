@@ -14,6 +14,10 @@ def import_inventory(file_name):
         print('Inventory imported successfully.')
     except FileNotFoundError:
         print('File not found. Creating now...')
+        # creating empty file
+        with open(file_name, 'w') as file: 
+            print("Empty file created Successfully")
+            pass 
         return dict()
     
 def export_inventory(output_file_name, inventory):
