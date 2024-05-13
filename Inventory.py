@@ -42,17 +42,17 @@ NEW ------------------------
 List of Dictionaries:
 [
     {
-        'name': 'iPhone'
+        'name': 'iPhone',
         'price': '999',
         'quantity': '200'
     },
     {
-        'name': 'iPad'
+        'name': 'iPad',
         'price': '500',
         'quantity': '100'
     },
     {
-        'name': 'mac'
+        'name': 'mac',
         'price': '2000',
         'quantity': '50'
     }
