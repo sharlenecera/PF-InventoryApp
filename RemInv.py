@@ -1,4 +1,5 @@
 import Inventory
+from EditInv import get_position_input, validate_position_input, get_item_by_index
 
 def remove_item():
     # Load existing inventory
@@ -7,15 +8,13 @@ def remove_item():
     # Display current inventory
     print('Current inventory:')
     for i, item in enumerate(inventory):
-        print(f'{i+1}, {item[0]} - {item[1]}')
+        print(f'{i+1}, {item}: {inventory[item]}')
 
     # Get input for item to remove
-    index = int(input('Enter the index of the item to remove: ')) - 1
+    index = validate_position_input(get_position_input(), len(inventory)) - 1
 
     # Remove item from inventory
-    if 0 <= index < len(inventory):
-        del inventory[index]
-        Inventory.export_inventory('inventory.csv', inventory)
-        print('Item removed successfully.')
-    else:
-        print('Invalid index.')
+    item_to_delete = get_item_by_index(inventory, index)
+    del inventory[item_to_delete]
+    Inventory.export_inventory('inventory.csv', inventory)
+    print('\033[92mItem removed successfully.\033[0m')
