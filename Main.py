@@ -1,6 +1,24 @@
 import AddInv, RemInv, EditInv, ViewInv
 
+login_details = {
+    'admin': 'admin'
+}
+
+def login():
+    login_successful = False
+    while not login_successful:
+        username = input("Enter username: ")
+        password = input("Enter password: ")
+
+        if username in login_details and login_details[username] == password:
+            print(f'Login successful! Welcome {username}')
+            login_successful = True
+        else:
+            print('Invalid login credentials, try again...')
+
 def main():
+    login()
+
     while True:
         print('\033[96m\n1. Add new item')
         print('2. Remove item')
