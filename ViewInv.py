@@ -4,7 +4,7 @@ def view_inventory():
     # Load existing inventory
     inventory = Inventory.import_inventory('inventory.csv')
     if inventory is None:
-        print('Inventory is empty.')
+        print('\033[91mInventory is empty.\033[0m')
         return
 
     # Display current inventory

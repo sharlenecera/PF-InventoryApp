@@ -11,7 +11,7 @@ def import_inventory(file_name):
             for row in reader:
                 print(f'row: {row}')
                 return row
-        print('Inventory imported successfully.')
+        print('Inventory \033[92mimported\033[0m successfully.')
     except FileNotFoundError:
         print('File not found. Creating now...')
         # creating empty file
