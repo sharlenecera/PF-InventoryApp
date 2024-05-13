@@ -1,16 +1,20 @@
 import AddInv, RemInv, EditInv, ViewInv
+import bcrypt
 
+# password is same as username
 login_details = {
-    'admin': 'admin'
+    'admin': bcrypt.hashpw('admin'.encode('utf-8'), bcrypt.gensalt(10)) 
 }
 
 def login():
     login_successful = False
     while not login_successful:
         username = input("Enter username: ")
-        password = input("Enter password: ")
+        password = str(input("Enter password: "))
 
-        if username in login_details and login_details[username] == password:
+        if username not in login_details:
+            print('Invalid login credentials, try again...')
+        elif bcrypt.checkpw(password.encode('utf-8'),login_details[username]):
             print(f'Login successful! Welcome {username}')
             login_successful = True
         else:
@@ -18,7 +22,7 @@ def login():
 
 def main():
     login()
-
+    
     while True:
         print('\033[96m\n1. Add new item')
         print('2. Remove item')
