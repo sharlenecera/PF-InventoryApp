@@ -58,25 +58,27 @@ Nested Dictionary:
 List of Dictionaries:
 [
     {
-        'Name': 'iPhone'
-        'Price': '999',
-        'Quantity': '200'
+        'name': 'iPhone'
+        'price': '999',
+        'quantity': '200'
     },
     {
-        'Name': 'iPad'
-        'Price': '500',
-        'Quantity': '100'
+        'name': 'iPad'
+        'price': '500',
+        'quantity': '100'
     },
     {
-        'Name': 'mac'
-        'Price': '2000',
-        'Quantity': '50'
+        'name': 'mac'
+        'price': '2000',
+        'quantity': '50'
     }
 ]
 
 CSV:
-iPhone,iPad,mac
-"{'Price': '999', 'Quantity': '200'}","{'Price': '500', 'Quantity': '100'}","{'Price': '2000', 'Quantity': '50'}"
+name,price,quantity
+iPhone,999,200
+iPad,500,100
+mac,2000,50
 
 OLD ------------------------
 Dictionary:
