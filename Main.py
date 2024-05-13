@@ -1,4 +1,4 @@
-# import AddInv, RemInv, EditInv, ViewInv
+import AddInv, RemInv, EditInv, ViewInv
 
 def main():
     while True:
@@ -11,7 +11,6 @@ def main():
         choice = input('Enter the choice: ')
         print(f'You have picked option: {choice} ')
 
-        '''
         if choice == '1':
             AddInv.add_item()
         elif choice == '2':
@@ -25,7 +24,6 @@ def main():
             break
         else:
             print('Invalid choice. Please try again')
-        '''
 
 if __name__ == '__main__':
     main()
