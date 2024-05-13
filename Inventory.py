@@ -39,22 +39,6 @@ How the inventory looks in two different formats
 
 NEW ------------------------
 
-Nested Dictionary:
-{
-    'iPhone': {
-        'Price': '999',
-        'Quantity': '200'
-    },
-    'iPad': {
-        'Price': '500',
-        'Quantity': '100'
-    },
-    'mac': {
-        'Price': '2000',
-        'Quantity': '50'
-    }
-}
-
 List of Dictionaries:
 [
     {
