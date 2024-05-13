@@ -8,10 +8,10 @@ def validate_quantity_input(quantity):
         try:
             # Check if the input is an integer >= 0
             if not quantity.isnumeric():
-                raise ValueError('You cannot have a negative quantity, try again...')
-            # Check if quanity is 0
-            if quantity=='0':
-                raise ValueError('You cannot have a quantity of 0, try again...')
+                raise ValueError('You can only have positive integer quantities, try again...')
+            # Check if quantity is 0
+            # if quantity=='0':
+            #     raise ValueError('You cannot have a quantity of 0, try again...')
             return int(quantity)
         except ValueError as error:
             print(error)
