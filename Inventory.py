@@ -125,6 +125,65 @@ class Inventory:
         self.export_inventory(inventory)
 
 
+##########   EDIT INVENTORY   ######################################################
+        
+
+    def get_position_input(self):
+        return input('Enter the position of the item to edit: ')
+
+    # max is the length of the dictionary
+    def validate_position_input(self, index, max):
+        while True:
+            try:
+                # Check if the input is an integer >= 0
+                if not index.isnumeric():
+                    raise ValueError('Invalid index, try again...')
+                # Check if index is 0
+                if index=='0':
+                    raise ValueError('Invalid index, try again...')
+                # Check if index is > length of the dictionary
+                if int(index) > max:
+                    raise ValueError('Invalid index, try again...')
+                return int(index)
+            except ValueError as error:
+                print(f'\033[91m{error}\033[0m')
+                # Asks for user input again
+                index = self.get_position_input()
+            except Exception as e:
+                print(f'\033[91mError: {e}\033[0m]')
+
+
+    def edit_item(self):
+        # Load existing inventory
+        inventory = self.import_inventory()
+
+        # Display current inventory
+        print('Current inventory:')
+        for i, item in enumerate(inventory):
+            print(f'{i+1} -> {item['name']}')
+
+        # Get input for item to edit and - 1 to get index
+        index = self.validate_position_input(self.get_position_input(),len(inventory)) - 1
+
+        # Gets any changes to the fields
+        print('Enter the new value if you wish to change it, otherwise leave blank.')
+        item_name = self.validate_name_input(inventory, self.get_name_input(), True)
+        item_price = self.validate_price_input(self.get_price_input(), True)
+        item_quantity = self.validate_quantity_input(self.get_quantity_input(), True)
+        
+        # If a new value is given, overwrite the existing value
+        if item_name:
+            inventory[index]['name'] = item_name
+        if item_price:
+            inventory[index]['price'] = item_price
+        if item_quantity:
+            inventory[index]['quantity'] = item_quantity
+
+        # Export the changes
+        self.export_inventory(inventory)
+        print('\033[92mItem edited successfully.\033[0m')
+
+
 ##########   IMPORT INVENTORY   ######################################################
 
 

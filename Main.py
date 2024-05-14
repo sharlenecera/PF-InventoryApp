@@ -52,9 +52,9 @@ class App:
             if choice == '1':
                 self.__inventory.add_item()
             elif choice == '2':
-                RemInv.remove_item()
+                self.__inventory.remove_item()
             elif choice == '3':
-                EditInv.edit_item()
+                self.__inventory.edit_item()
             elif choice == '4':
                 self.__inventory.view_inventory()
             elif choice == '5':
