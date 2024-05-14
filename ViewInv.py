@@ -11,7 +11,7 @@ def view_inventory():
         # Display current inventory
         print('\033[93mCurrent inventory:\n')
         for item in inventory:
-            print(f'Name: {item['name']} \nQuantity: {item['quantity']} \nPrice: {item['price']} \n')
+            print(f'Name: {item['name']} \nPrice: {item['price']} \nQuantity: {item['quantity']} \n')
         print('\033[0m')
     except Exception as e:
         print(f'Error: {e}')
