@@ -184,6 +184,27 @@ class Inventory:
         print('\033[92mItem edited successfully.\033[0m')
 
 
+##########   REMOVE INVENTORY   ######################################################
+        
+
+    def remove_item(self):
+        # Load existing inventory
+        inventory = self.import_inventory()
+
+        # Display current inventory
+        print('Current inventory:')
+        for i, item in enumerate(inventory):
+            print(f'{i+1} -> {item['name']}')
+
+        # Get index for item to remove
+        index = self.validate_position_input(self.get_position_input(), len(inventory)) - 1
+
+        # Remove item from inventory
+        del inventory[index]
+        self.export_inventory(inventory)
+        print('\033[92mItem removed successfully.\033[0m')
+
+
 ##########   IMPORT INVENTORY   ######################################################
 
 
