@@ -1,38 +1,70 @@
 import csv
 
-def import_inventory(file_name):
+class Inventory:
 
-    # Read the data from the CSV file
-    try:
+    def __init__(self, file_name):
+        self.__file_name = file_name
+
+
+    def view_inventory(self):
+        # Load existing inventory
+        inventory = self.import_inventory()
+        if not inventory:
+            print('\033[91mInventory is empty.\033[0m')
+            return
+
+        # Some ANSI escape sequences
+        bs = '\033[1m' # bold start
+        reset = '\033[0m\033[93m' # bold end
+        us = '\033[4m' # Underline start
+
+        try:
+            # Display current inventory
+            print('\033[93m\n ============================================')
+            print(f'|            {us}Current inventory{reset}:              |')
+            print(f' ============================================')
+            for item in inventory:
+                print(f'| ==  {bs}Name{reset}: {item['name']}')
+                print(f'|     {bs}Price{reset}: {item['price']}')
+                print(f'|     {bs}Quantity{reset}: {item['quantity']}')
+                print('|')
+            print(' ============================================\033[0m')
+        except Exception as e:
+            print(f'\033[91mError: {e}\033[0m]')
+
+
+    def import_inventory(self):
         # Read the data from the CSV file
-        with open(file_name, 'r', newline='') as file:
-            inventory = []
-            reader = csv.DictReader(file)
-            for row in reader:
-                inventory.append(row)
-        return inventory
-    except FileNotFoundError:
-        print('File not found. Creating now...')
-        # creating empty file
-        with open(file_name, 'w') as file: 
-            print("Empty file created Successfully")
-        return []
-    
-def export_inventory(output_file_name, inventory):
-    # Write the data to the CSV file
-    try:
+        try:
+            # Read the data from the CSV file
+            with open(self.__file_name, 'r', newline='') as file:
+                inventory = []
+                reader = csv.DictReader(file)
+                for row in reader:
+                    inventory.append(row)
+            return inventory
+        except FileNotFoundError:
+            print('File not found. Creating now...')
+            # creating empty file
+            with open(self.__file_name, 'w') as file: 
+                print("Empty file created Successfully")
+            return []
+        
+        
+    def export_inventory(self, inventory):
+        # Write the data to the CSV file
+        try:
+            fieldnames = ['name', 'price', 'quantity']
 
-        fieldnames = ['name', 'price', 'quantity']
-
-        with open(output_file_name, 'w', newline='') as file:
-            writer = csv.DictWriter(file, fieldnames=fieldnames)
-            # Write the header row (dictionary keys)
-            writer.writeheader()
-            # Write the dictionary row to the csv file
-            writer.writerows(inventory)
-        print('Inventory exported successfully.')
-    except Exception as e:
-        print(f'\033[91mError exporting inventory: {e}\033[0m')
+            with open(self.__file_name, 'w', newline='') as file:
+                writer = csv.DictWriter(file, fieldnames=fieldnames)
+                # Write the header row (dictionary keys)
+                writer.writeheader()
+                # Write the dictionary row to the csv file
+                writer.writerows(inventory)
+            print('Inventory exported successfully.')
+        except Exception as e:
+            print(f'\033[91mError exporting inventory: {e}\033[0m')
 
 '''
 How the inventory looks in two different formats
