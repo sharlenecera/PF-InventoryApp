@@ -7,3 +7,8 @@ What to do on the command line before running the app:
     source venv/bin/activate
 4. Download the dependencies:
     pip install bcrypt
+
+To run the app:
+1. Navigate to the InventoryApp directory.
+2. Enter the following in the terminal:
+    python3 Main.py
