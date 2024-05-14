@@ -20,18 +20,25 @@ def login():
         else:
             print('\033[91mInvalid login credentials, try again...\033[0m')
 
+def print_menu():
+    print('\033[96m\n============================================')
+    print('|               Main Menu                   |')
+    print('============================================')
+    print('|   1. Add new item                         |')
+    print('|   2. Remove item                          |')
+    print('|   3. Edit item                            |')
+    print('|   4. View Inventory                       |')
+    print('|   5. Exit                                 |')
+    print('============================================\033[0m')
+
 def main():
     login()
     
     while True:
-        print('\033[96m\n1. Add new item')
-        print('2. Remove item')
-        print('3. Edit item')
-        print('4. View Inventory')
-        print('5. Exit\033[0m')
+        print_menu()
 
-        choice = input('Enter the choice: ')
-        print(f'\033[96mYou have picked option: {choice} \033[0m')
+        choice = input('\033[35m~~~~~~Enter the choice: ')
+        print(f'You have picked option: {choice} \033[0m')
 
         if choice == '1':
             AddInv.add_item()
@@ -45,7 +52,7 @@ def main():
             print('\033[91mExiting program...\033[0m')
             break
         else:
-            print('Invalid choice. Please try again')
+            print('\033[91mInvalid choice. Please try again\033[0m]')
 
 if __name__ == '__main__':
     main()

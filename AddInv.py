@@ -14,10 +14,10 @@ def validate_name_input(inventory, name, optional=False):
                 raise ValueError('Item name already exists, try again...')
             return name
         except ValueError as error:
-            print(error)
+            print(f'\033[91mError: {error}\033[0m]')
             name = get_name_input()
         except Exception as e:
-            print(f'Error: {e}')
+            print(f'\033[91mError: {e}\033[0m]')
 
 def get_price_input():
     return input('Enter the price: ')
@@ -36,10 +36,10 @@ def validate_price_input(price, optional=False):
                 raise ValueError('You cannot have a price of 0, try again...')
             return int(price)
         except ValueError as error:
-            print(error)
+            print(f'\033[91mError: {error}\033[0m]')
             price = get_price_input()
         except Exception as e:
-            print(f'Error: {e}')
+            print(f'\033[91mError: {e}\033[0m]')
 
 def get_quantity_input():
     return input('Enter item quantity: ')
@@ -58,10 +58,10 @@ def validate_quantity_input(quantity, optional=False):
             #     raise ValueError('You cannot have a quantity of 0, try again...')
             return int(quantity)
         except ValueError as error:
-            print(error)
+            print(f'\033[91mError: {error}\033[0m]')
             quantity = get_quantity_input()
         except Exception as e:
-            print(f'Error: {e}')
+            print(f'\033[91mError: {e}\033[0m]')
 
 def add_item():
     # Load existing inventory

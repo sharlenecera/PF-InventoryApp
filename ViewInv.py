@@ -7,11 +7,21 @@ def view_inventory():
         print('\033[91mInventory is empty.\033[0m')
         return
 
+    bs = '\033[1m' # bold start
+    reset = '\033[0m\033[93m' # bold end
+    us = '\033[4m'
+
+
     try:
         # Display current inventory
-        print('\033[93mCurrent inventory:\n')
+        print('\033[93m\n ============================================')
+        print(f'|            {us}Current inventory{reset}:              |')
+        print(f' ============================================')
         for item in inventory:
-            print(f'Name: {item['name']} \nPrice: {item['price']} \nQuantity: {item['quantity']} \n')
-        print('\033[0m')
+            print(f'| ==  {bs}Name{reset}: {item['name']}')
+            print(f'|     {bs}Price{reset}: {item['price']}')
+            print(f'|     {bs}Quantity{reset}: {item['quantity']}')
+            print('|')
+        print(' ============================================\033[0m')
     except Exception as e:
-        print(f'Error: {e}')
+        print(f'\033[91mError: {e}\033[0m]')

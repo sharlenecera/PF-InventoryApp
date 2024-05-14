@@ -22,7 +22,7 @@ def validate_position_input(index, max):
             print(f'\033[91m{error}\033[0m')
             index = get_position_input()
         except Exception as e:
-            print(f'Error: {e}')
+            print(f'\033[91mError: {e}\033[0m]')
 
 
 def edit_item():
