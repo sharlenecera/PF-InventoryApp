@@ -5,6 +5,13 @@ class Inventory:
     def __init__(self, file_name):
         self.__file_name = file_name
 
+
+    def print_numbered_items(self, inventory):
+        # Display current inventory
+        print('\033[33mCurrent inventory:')
+        for i, item in enumerate(inventory):
+            print(f'\033[33m{i+1} -> {item['name']}\033[0m')
+
 ##########   VIEW INVENTORY   ########################################################
 
     def view_inventory(self):
@@ -160,10 +167,7 @@ class Inventory:
         # Load existing inventory
         inventory = self.import_inventory()
 
-        # Display current inventory
-        print('\033[33mCurrent inventory:')
-        for i, item in enumerate(inventory):
-            print(f'\033[33m{i+1} -> {item['name']}\033[0m')
+        self.print_numbered_items(inventory)
 
         # Get input for item to edit and - 1 to get index
         print('\033[36mEditing item:\033[0m')
@@ -195,10 +199,7 @@ class Inventory:
         # Load existing inventory
         inventory = self.import_inventory()
 
-        # Display current inventory
-        print('\033[33mCurrent inventory:')
-        for i, item in enumerate(inventory):
-            print(f'\033[33m{i+1} -> {item['name']}\033[0m')
+        self.print_numbered_items(inventory)
 
         # Get index for item to remove
         print('\033[36mRemoving item:\033[0m')
