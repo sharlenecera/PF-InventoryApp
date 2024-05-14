@@ -1,5 +1,5 @@
 import Inventory
-from AddInv import validate_name_input, get_name_input, validate_price_input, get_price_input, validate_quantity_input, get_quantity_input
+# from AddInv import validate_name_input, get_name_input, validate_price_input, get_price_input, validate_quantity_input, get_quantity_input
 
 def get_position_input():
     return input('Enter the position of the item to edit: ')

@@ -50,7 +50,7 @@ class App:
             print(f'You have picked option: {choice} \033[0m')
 
             if choice == '1':
-                AddInv.add_item()
+                self.__inventory.add_item()
             elif choice == '2':
                 RemInv.remove_item()
             elif choice == '3':
