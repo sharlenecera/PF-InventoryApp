@@ -7,10 +7,10 @@ def view_inventory():
         print('\033[91mInventory is empty.\033[0m')
         return
 
+    # Some ANSI escape sequences
     bs = '\033[1m' # bold start
     reset = '\033[0m\033[93m' # bold end
-    us = '\033[4m'
-
+    us = '\033[4m' # Underline start
 
     try:
         # Display current inventory

@@ -10,7 +10,7 @@ def remove_item():
     for i, item in enumerate(inventory):
         print(f'{i+1} -> {item['name']}')
 
-    # Get input for item to remove
+    # Get index for item to remove
     index = validate_position_input(get_position_input(), len(inventory)) - 1
 
     # Remove item from inventory

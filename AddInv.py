@@ -67,7 +67,7 @@ def add_item():
     # Load existing inventory
     inventory = Inventory.import_inventory('inventory.csv')
     
-    # Get input for new item
+    # Get input for new item and validate the inputs
     item_name = validate_name_input(inventory, get_name_input())
     item_price = validate_price_input(get_price_input())
     item_quantity = validate_quantity_input(get_quantity_input())

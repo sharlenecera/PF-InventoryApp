@@ -8,13 +8,14 @@ login_details = {
 
 def login():
     login_successful = False
+    # Loops until login is successful
     while not login_successful:
+        # Input login details
         username = input("Enter username: ")
         password = str(input("Enter password: "))
 
-        if username not in login_details:
-            print('\033[91mInvalid login credentials, try again...\033[0m')
-        elif bcrypt.checkpw(password.encode('utf-8'),login_details[username]):
+        # Checks if username is valid and if the password matches the stored hashed password
+        if username in login_details and bcrypt.checkpw(password.encode('utf-8'),login_details[username]):
             print(f'\033[92mLogin successful! Welcome {username}\033[0m')
             login_successful = True
         else:
