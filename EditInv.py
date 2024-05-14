@@ -1,5 +1,5 @@
 import Inventory
-from AddInv import validate_quantity_input, get_quantity_input
+from AddInv import validate_name_input, get_name_input, validate_price_input, get_price_input, validate_quantity_input, get_quantity_input
 
 def get_position_input():
     return input('Enter the position of the item to edit: ')
@@ -24,10 +24,6 @@ def validate_position_input(index, max):
         except Exception as e:
             print(f'Error: {e}')
 
-def get_item_by_index(inventory, index):
-    for i, item in enumerate(inventory):
-        if i == index:
-            return item
 
 def edit_item():
     # Load existing inventory
@@ -36,15 +32,24 @@ def edit_item():
     # Display current inventory
     print('Current inventory:')
     for i, item in enumerate(inventory):
-        print(f'{i+1}, {item}: {inventory[item]}')
+        print(f'{i+1} -> {item['name']}')
 
     # Get input for item to edit and - 1 to get index
     index = validate_position_input(get_position_input(),len(inventory)) - 1
-    item_to_edit = get_item_by_index(inventory, index)
 
-    # Get new quantity
+    # Choose what attribute to edit
+    print('Enter the new value if you wish to change it, otherwise leave blank.')
+    item_name = validate_name_input(inventory, get_name_input(), True)
+    item_price = validate_price_input(get_price_input(), True)
+    item_quantity = validate_quantity_input(get_quantity_input(), True)
+    if item_name:
+        inventory[index]['name'] = item_name
+    if item_price:
+        inventory[index]['price'] = item_price
+    if item_quantity:
+        inventory[index]['quantity'] = item_quantity
 
-    # Edit item in inventory
-    inventory[item_to_edit] = validate_quantity_input(get_quantity_input())
+    
+    
     Inventory.export_inventory('inventory.csv', inventory)
     print('\033[92mItem edited successfully.\033[0m')

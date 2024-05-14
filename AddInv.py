@@ -3,9 +3,12 @@ import Inventory
 def get_name_input():
     return input('Enter item name: ')
 
-def validate_name_input(inventory, name):
+def validate_name_input(inventory, name, optional=False):
     while True:
         try:
+            # Check if input is optional
+            if optional and name == '':
+                return None
             # Check if name already exists in inventory
             if name in [item['name'] for item in inventory]:
                 raise ValueError('Item name already exists, try again...')
@@ -19,9 +22,12 @@ def validate_name_input(inventory, name):
 def get_price_input():
     return input('Enter the price: ')
 
-def validate_price_input(price):
+def validate_price_input(price, optional=False):
     while True:
         try:
+            # Check if input is optional
+            if optional and price == '':
+                return None
             # Check if the input is an integer >= 0
             if not price.isnumeric():
                 raise ValueError('This inventory only allows positive integer prices, try again...')
@@ -38,9 +44,12 @@ def validate_price_input(price):
 def get_quantity_input():
     return input('Enter item quantity: ')
 
-def validate_quantity_input(quantity):
+def validate_quantity_input(quantity, optional=False):
     while True:
         try:
+            # Check if input is optional
+            if optional and quantity == '':
+                return None
             # Check if the input is an integer >= 0
             if not quantity.isnumeric():
                 raise ValueError('You can only have positive integer quantities, try again...')
