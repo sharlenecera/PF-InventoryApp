@@ -31,7 +31,7 @@ class Inventory:
                 print('|')
             print(' ============================================\033[0m')
         except Exception as e:
-            print(f'\033[91mError: {e}\033[0m]')
+            print(f'\033[91mError: {e}\033[0m')
 
 
 ##########   ADD INVENTORY   ########################################################
@@ -39,6 +39,7 @@ class Inventory:
 
     def get_name_input(self):
         return input('Enter item name: ')
+
 
     def validate_name_input(self, inventory, name, optional=False):
         while True:
@@ -51,10 +52,10 @@ class Inventory:
                     raise ValueError('Item name already exists, try again...')
                 return name
             except ValueError as error:
-                print(f'\033[91mError: {error}\033[0m]')
+                print(f'\033[91mError: {error}\033[0m')
                 name = self.get_name_input()
             except Exception as e:
-                print(f'\033[91mError: {e}\033[0m]')
+                print(f'\033[91mError: {e}\033[0m')
 
 
     def get_price_input(self):
@@ -75,10 +76,10 @@ class Inventory:
                     raise ValueError('You cannot have a price of 0, try again...')
                 return int(price)
             except ValueError as error:
-                print(f'\033[91mError: {error}\033[0m]')
+                print(f'\033[91mError: {error}\033[0m')
                 price = self.get_price_input()
             except Exception as e:
-                print(f'\033[91mError: {e}\033[0m]')
+                print(f'\033[91mError: {e}\033[0m')
 
 
     def get_quantity_input(self):
@@ -99,16 +100,17 @@ class Inventory:
                 #     raise ValueError('You cannot have a quantity of 0, try again...')
                 return int(quantity)
             except ValueError as error:
-                print(f'\033[91mError: {error}\033[0m]')
+                print(f'\033[91mError: {error}\033[0m')
                 quantity = self.get_quantity_input()
             except Exception as e:
-                print(f'\033[91mError: {e}\033[0m]')
+                print(f'\033[91mError: {e}\033[0m')
 
 
     def add_item(self):
         # Load existing inventory
         inventory = self.import_inventory()
         
+        print('\033[36mAdding item:\033[0m')
         # Get input for new item and validate the inputs
         item_name = self.validate_name_input(inventory, self.get_name_input())
         item_price = self.validate_price_input(self.get_price_input())
@@ -129,7 +131,8 @@ class Inventory:
         
 
     def get_position_input(self):
-        return input('Enter the position of the item to edit: ')
+        return input('Enter the position of the item: ')
+
 
     # max is the length of the dictionary
     def validate_position_input(self, index, max):
@@ -150,7 +153,7 @@ class Inventory:
                 # Asks for user input again
                 index = self.get_position_input()
             except Exception as e:
-                print(f'\033[91mError: {e}\033[0m]')
+                print(f'\033[91mError: {e}\033[0m')
 
 
     def edit_item(self):
@@ -158,11 +161,12 @@ class Inventory:
         inventory = self.import_inventory()
 
         # Display current inventory
-        print('Current inventory:')
+        print('\033[33mCurrent inventory:')
         for i, item in enumerate(inventory):
-            print(f'{i+1} -> {item['name']}')
+            print(f'\033[33m{i+1} -> {item['name']}\033[0m')
 
         # Get input for item to edit and - 1 to get index
+        print('\033[36mEditing item:\033[0m')
         index = self.validate_position_input(self.get_position_input(),len(inventory)) - 1
 
         # Gets any changes to the fields
@@ -192,11 +196,12 @@ class Inventory:
         inventory = self.import_inventory()
 
         # Display current inventory
-        print('Current inventory:')
+        print('\033[33mCurrent inventory:')
         for i, item in enumerate(inventory):
-            print(f'{i+1} -> {item['name']}')
+            print(f'\033[33m{i+1} -> {item['name']}\033[0m')
 
         # Get index for item to remove
+        print('\033[36mRemoving item:\033[0m')
         index = self.validate_position_input(self.get_position_input(), len(inventory)) - 1
 
         # Remove item from inventory
@@ -222,7 +227,7 @@ class Inventory:
             print('File not found. Creating now...')
             # creating empty file
             with open(self.__file_name, 'w') as file: 
-                print("Empty file created Successfully")
+                print("\033[92mEmpty file created Successfully\033[0m")
             return []
         
 
@@ -237,9 +242,10 @@ class Inventory:
                 writer.writeheader()
                 # Write the dictionary row to the csv file
                 writer.writerows(inventory)
-            print('Inventory exported successfully.')
+            print('\033[92mInventory exported successfully.\033[0m')
         except Exception as e:
             print(f'\033[91mError exporting inventory: {e}\033[0m')
+
 
 '''
 How the inventory looks in two different formats

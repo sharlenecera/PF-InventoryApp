@@ -6,6 +6,7 @@ class App:
     def __init__(self, file_name):
         self.__inventory = Inventory.Inventory(file_name)
 
+
     # password is same as username
     login_details = {
         'admin': bcrypt.hashpw('admin'.encode('utf-8'), bcrypt.gensalt(10)) 
@@ -61,13 +62,14 @@ class App:
                 print('\033[91mExiting program...\033[0m')
                 break
             else:
-                print('\033[91mInvalid choice. Please try again\033[0m]')
+                print('\033[91mInvalid choice. Please try again\033[0m')
 
 
 def main():
     file_name = 'inventory.csv'
     app = App(file_name)
     app.run()
+
 
 if __name__ == '__main__':
     main()
